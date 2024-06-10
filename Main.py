@@ -9,24 +9,19 @@ Created on 9 ago. 2019
 
 if __name__ == '__main__':
     
-    #->Rebanadas o slices
-    #Creo una lista con letras
-    a = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+    #->Binarios...
+    nlist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19]
+    #->Incorporo los numeros a una instancia de la clase bytes
+    arr = bytes(nlist)
+    print(arr)
     
-    #->Accedo por subindice a un elemento cualquiera
-    print("1:",a[3]);
-    #->De la salida infiero que el primer elemento es subindice 0
-    
-    #->Obtengo una sublista indicando inicio y fin, opcion que mas se usara en el curso
-    print("2:",a[0:3])
-    #->Con subindice negativo obtengo el elemento contando desde la derecha
-    print("3:",a[-1])
-    print("4:",a[-4:-1])
-    print("5:",a[-4:])
-    
-    #->Dejando abierto el segundo parametro se toman todos los elementos
-    print("6:",a[2:])
-    print("7:",a[:-3])
+    #->Imprimo como hexadecimal
+    for v in arr:
+        print(hex(v), end=" / ")
+        
+    #->El objeto permite acceso por slices
+    print("")
+    print(arr[8:15])
     
     
     
