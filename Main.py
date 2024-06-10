@@ -6,19 +6,16 @@ Created on 9 ago. 2019
 @author: pabli
 '''
 import random
-
-
-def init_temps():
-    temps = []
-    for i in range(0, 100):
-        temps.append(random.randrange(-20, 20))
-        
-    temps[random.randrange(0,100)] = -35
+#Codigo global, solo para fines didacticos
+#No desarrollar de esta manera
+temps = []
+for i in range(0, 100):
+    temps.append(random.randrange(-20, 20))
     
-    return temps
+temps[random.randrange(0,100)] = -35
 
 
-def process_temps(temps, limit, callback):
+def process_temps(limit, callback):
     for t in temps:
         if t<limit:
             callback(t)
@@ -29,6 +26,4 @@ def under_temp(t):
 if __name__ == '__main__':
     
     #Inicializo temperaturas para el ejemplo
-    temps = init_temps()
-    
-    process_temps(temps, -30, under_temp)
+    process_temps(-30, under_temp)
