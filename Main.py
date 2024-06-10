@@ -6,37 +6,19 @@ Created on 9 ago. 2019
 @author: pabli
 '''
 
+def main():
+    #->Entrada por consola, la vamos a usar muy poco.
+    x = input("Ingrese un valor de coma flotante: ")
+    
+    
+    print("El valor ingresado es: ", x, ".")
+    print("El valor ingresado es: %5.2f."%(float(x)))
+    
+    
+
 
 if __name__ == '__main__':
-    #->Asignacion con = 
-    midpoint = 500
-    
-    #->Instancio dos listas vacias ==> lower = list()
-    #->Con ; salto la necesidad de nueva linea para terminar sentencia (No recomendado)
-    lower = []; upper = [];
-    
-    
-    #->Iteracion definida, inicio en 10, finalizo en 1000 y los saltos son de 27 (Pueden ser negativos)
-    for i in range(10,1000,27):
-        #->Condicional
-        if (i<midpoint):
-            #->Agrego a la lista
-            lower.append(i)
-        else:
-            #->Agrego a la lista
-            upper.append(i)
-            
-    print("Lower:", lower)
-    print("Upper:", upper)
-    
-    #->Iteraciones sobre listas, se crea la lista utilizando nombre clase
-    word_list = list()
-    
-    word_list.extend(["Hola", "Mundo", "!"])
-    
-    for word in word_list:
-        print(word)
-    
+    main()
     
     
         
