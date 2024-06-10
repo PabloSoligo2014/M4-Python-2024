@@ -22,22 +22,59 @@ Total 110, en realidad es 112 por padding
 "25127140|Nilton Santos|1444.99|M|A\n"
 "33351231|Roger Milla|123554.00|M|A\n"
 """
-import ctypes
+
+import random
+
+def dummy_fun(param):
+    if param==5:
+        raise Exception("El parametro es 5 y no es aceptado")
+    
 
 if __name__ == '__main__':
     
-    #->Binarios...
-    f = open('./Resources/clientes.dat', mode='rb')
+    #->Excepciones..
+    #->Atrapo una excepcion y la trato
+    try:
+        f = open('./Resource/clientes.dat', mode='rb')
+        #Todo el codigo que sea necesario aca
+        f.close()
+    except Exception as ex:
+        print("Ha ocurrido un error desconocido...", ex)
+            
     
-    chunk = f.read(112)
-    while(chunk):
-        code, name, balance, sex, state, aux= struct.unpack("@L100sfcch", chunk)
-        name = ctypes.create_string_buffer(name).value
-        print(code, name, balance, sex, state)
-        chunk = f.read(112)
+    #->Atrapo una excepcion, pero no cualquier
+    try:
+        f = open('./Resource/clientes.dat', mode='rb')
+        #Todo el codigo que sea necesario aca
+        f.close()
+    except FileNotFoundError as ex:
+        print("Ha ocurrido un error, no se encontro el archivo...", ex)
+        
     
-    f.close()
+    #->Atrapo una excepcion, pero no cualquier
+    try:
+        if random.randrange(0,1)==1:
+            f = open('./Resource/clientes.dat', mode='rb')
+            #Todo el codigo que sea necesario aca
+            f.close()
+        else:
+            w = 5
+            x = w / 0
+    except FileNotFoundError as ex:
+        print("Ha ocurrido un error, no se encontro el archivo...", ex)
+    except Exception as ex:    
+        print("Ha ocurrido un error desconocido...", ex)
+        
     
+    try:
+        #codigo
+        dummy_fun(5)
+        #codigo
+    except Exception as mex:
+        print(mex)
+        
+    
+
     
     
     
