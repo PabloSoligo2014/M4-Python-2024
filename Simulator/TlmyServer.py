@@ -104,7 +104,7 @@ if __name__ == '__main__':
     #Simulador, temporalmente solo simula telemetria TITA, no
     #esta parametrizable
     
-    filename = ".././Resources/TITAraw_tlmy.bin"
+    filename = "./Resources/TITAraw_tlmy.bin"
     pktsize = 113
     
     #Enlisto todos los paquetes del satelite
