@@ -27,3 +27,4 @@ if __name__ == '__main__':
     
     #Inicializo temperaturas para el ejemplo
     process_temps(-30, under_temp)
+    
