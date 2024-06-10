@@ -9,23 +9,40 @@ import struct
 #import random
 
 
-def max(x, y):
-    if x>y:
-        return x
-    else:
-        return y
-   
+def max(*args):
+    la = len(args)
+    if (la==0):
+        return None
     
-def show_data(name, age, address):
-    print("Name: ", name, ",age:", age, ",address:", address)
+    lmax = args[0]
+    for arg in args[1:]:
+        if arg>lmax:
+            lmax = arg
+            
+            
+    return lmax
 
+
+def show_data(**kwargs):
+    for key, value in kwargs.items():
+        print(key, value)
+    #O si se quiere respetar orden y se conoce el nombre de los parametros
+    print("Nombre: ", kwargs["name"], ", age:", kwargs["age"], "...etc...")
+
+    
 if __name__ == '__main__':
     
     lx = 10
     ly = 20
+    lz = 15
     
-    print("El maximo entre lx y ly es:", max(lx, ly))    
-    show_data(address="Segurola y Havanna", name="Diego Armando Maradona", age=62)
+    print("El máximo es: ", max(lx,ly,lx))
+    show_data(name="Diego Armando Maradona", age=58, address="Segurola y Havanna")
+    
+    
+    
+    
+    
     
     
                            
