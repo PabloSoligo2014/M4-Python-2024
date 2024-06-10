@@ -21,6 +21,12 @@ class Person(object):
     
     def __repr__(self):
         return self.__name+"|"+str(self.__age)+"|"+str(self.__heigth)
+    
+    def __gt__(self, other):
+        if (type(self)==type(other)):
+            return self.__age>other.__age
+        else:
+            return False #->O exception?
 
 if __name__ == '__main__':
 
