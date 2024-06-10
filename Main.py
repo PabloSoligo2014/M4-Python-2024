@@ -5,39 +5,69 @@ Created on 9 ago. 2019
 
 @author: pabli
 '''
-import struct
+
 #import random
+from math import sin, cos, sqrt, atan2, radians
+
+R = 6373.0
 
 
-def max(*args):
-    la = len(args)
-    if (la==0):
-        return None
+class GeoPosicion(object):
+    __lat = 0
+    __lon = 0
+    def __init__(self, lat=0, lon=0):
+        if lat>-90 and lat<90:
+            self.__lat = lat
+        else:
+            raise Exception("Invalid lat")
+            
+        if lon>-180 and lon<180:        
+            self.__lon = lon
+        else:
+            raise Exception("Invalid lon")
+        
+    def get_lat(self):
+        return self.__lat
     
-    lmax = args[0]
-    for arg in args[1:]:
-        if arg>lmax:
-            lmax = arg
-            
-            
-    return lmax
+    def get_lon(self):
+        return self.__lon
+    
+    def set_lat(self, value):
+        self.__lat = value
+        
+    def set_lon(self, value):
+        #Falta proteccion!
+        self.__lon = value
+        
+    def distance(self, other):
+        lat1 = radians(self.__lat)
+        lon1 = radians(self.__lon)
+        lat2 = radians(other.__lat)
+        lon2 = radians(other.__lon)
+        
+        dlon = lon2 - lon1
+        dlat = lat2 - lat1
+        
+        a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+        c = 2 * atan2(sqrt(a), sqrt(1 - a))
+        
+        return R * c
 
-
-def show_data(**kwargs):
-    for key, value in kwargs.items():
-        print(key, value)
-    #O si se quiere respetar orden y se conoce el nombre de los parametros
-    print("Nombre: ", kwargs["name"], ", age:", kwargs["age"], "...etc...")
+    
+    def __sub__(self, other):
+        return self.distance(other)
+        
+    #Sobrecargar operador ==
 
     
 if __name__ == '__main__':
     
-    lx = 10
-    ly = 20
-    lz = 15
+    gConae  = GeoPosicion(-34.616838, -58.369501)
+    gUNLaM  = GeoPosicion(-34.669898, -58.561815)
     
-    print("El máximo es: ", max(lx,ly,lx))
-    show_data(name="Diego Armando Maradona", age=58, address="Segurola y Havanna")
+    
+    print("La distancia entre la CONAE y la UNLAM es de %5.2f km"%gConae.distance(gUNLaM))
+    print("La distancia entre la CONAE y la UNLAM es de %5.2f km"%(gConae-gUNLaM))
     
     
     
