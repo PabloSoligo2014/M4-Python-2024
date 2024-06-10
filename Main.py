@@ -15,6 +15,12 @@ class Person(object):
         self.__name     = name
         self.__age      = age
         self.__heigth   = heigth
+        
+    def get_age(self):
+        return self.__age
+    
+    def get_name(self):
+        return self.__name
 
     def __str__(self):
         return self.__name+"|"+str(self.__age)+"|"+str(self.__heigth)
@@ -28,10 +34,18 @@ class Person(object):
         else:
             return False #->O exception?
 
-if __name__ == '__main__':
+def cmp_person_by_age(p):
+    return p.get_age()
 
-    persons = [Person("Juan", 30, 1.78), Person("Pedro", 79, 1.50), Person("Maria", 21, 1.68)]
-    persons.sort()
+def cmp_person_by_name(p):
+    return p.get_name()
+    
+if __name__ == '__main__':
+    persons = [Person("Juan", 30, 1.78), Person("Juan", 35, 1.78), Person("Pedro", 79, 1.50), Person("Maria", 21, 1.68)]
+    persons.sort(key=cmp_person_by_age)
+    print(persons)
+    
+    persons.sort(key=cmp_person_by_name)
     print(persons)
     
     
