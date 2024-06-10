@@ -8,38 +8,35 @@ Created on 9 ago. 2019
 
 
 if __name__ == '__main__':
-    #->Asignacion con = 
-    midpoint = 500
     
-    #->Instancio dos listas vacias ==> lower = list()
-    #->Con ; salto la necesidad de nueva linea para terminar sentencia (No recomendado)
-    lower = []; upper = [];
+    #->Rebanadas o slices
+    #Creo una lista con letras
+    a = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+    
+    #->Accedo por subindice a un elemento cualquiera
+    print("1:",a[3]);
+    #->De la salida infiero que el primer elemento es subindice 0
+    
+    #->Obtengo una sublista indicando inicio y fin, opcion que mas se usara en el curso
+    print("2:",a[0:3])
+    #->Con subindice negativo obtengo el elemento contando desde la derecha
+    print("3:",a[-1])
+    print("4:",a[-4:-1])
+    print("5:",a[-4:])
+    
+    #->Dejando abierto el segundo parametro se toman todos los elementos
+    print("6:",a[2:])
+    print("7:",a[:-3])
     
     
-    #->Iteracion definida, inicio en 10, finalizo en 1000 y los saltos son de 27 (Pueden ser negativos)
-    for i in range(10,1000,27):
-        #->Condicional
-        if (i<midpoint):
-            #->Agrego a la lista
-            lower.append(i)
-        else:
-            #->Agrego a la lista
-            upper.append(i)
-            
-    print("Lower:", lower)
-    print("Upper:", upper)
     
-    #->Iteraciones sobre listas, se crea la lista utilizando nombre clase
-    word_list = list()
-    word_list.extend(["Hola", "Mundo", "!"])
-
-    #->Ciclo indefinido
-    i=0
-    wll = len(word_list)
-    while(i<wll):
-        #->A los elementos de la lista se los puede acceder por subindices 
-        print(word_list[i])
-        i+=1 #->Operacion valida como en C/C++ => i=i+1, no es posible i++
+    
+    
+    
+    
+    
+    
+    
     
     
         
