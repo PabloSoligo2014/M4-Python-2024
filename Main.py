@@ -4,35 +4,45 @@
 #python -m compileall Main.py
 
 
-def arg_como_tuplas(*args):
-    print(type(args))
-    ar1, ar2, ar3 = args
-    print(ar1, ar2, ar3)
-    return args
-
-def arg_como_dic(**args):
-    print(type(args))
-    print(args)
-
-def arg_variables(*args, **kwargs):
-    print("args=>", args)
-    print("kwargs=>", kwargs)
-    return args, kwargs
+def miFun():
+    print("Llamando a una funcion")
 
 
-class MiClass(object):
+class Alarm(object):
     _f = 0
+    _criticity = 10
+
     def __init__(self):
         print("Constructor")
         self._f = 1
+    
+    def __call__(self, *args, **kwds) :
+        print("Alarma criticidad %d" % self._criticity)
+
+    def emitirAlarma(self):
+        print("Alarma emitida")
 
 
 if __name__ == '__main__':
-    print("Hola mundo")
+    f = miFun
+    c = Alarm()
+    lcosas = [33, 25.5, c, "Hola"]
 
-    arg_como_tuplas(1, 2, 3)
-    arg_como_dic(a=1, b=2, c=3)
-    arg_variables(1, 2, 3, a=1, b=2, c=3)
+    if callable(c):
+        c()
+
+    if callable(f): 
+        f()
+
+    for cosa in lcosas:
+        if isinstance(cosa,Alarm):
+            print("Es una instancia de Alarm")
+            #Si me entero que es una alarma puedo hacer las cosas que se hace con una alarma
+            cosa.emitirAlarma()
+
+    att = getattr(c, '_criticity')
+
+    print("Criticidad: %d" % att)
         
     
     
