@@ -54,6 +54,7 @@ if __name__ == '__main__':
     import inspect
 
     vars = {"Var02":(10, "calibVar02"), "Var03":(20, "calibVar03")}
+
     modulo = importlib.import_module('Calib')
     fcs = {nombre: funcion for nombre, funcion in inspect.getmembers(modulo, inspect.isfunction)}
     
