@@ -3,6 +3,10 @@
 
 #python -m compileall Main.py
 
+def fact(n):
+    if n == 0:
+        return 1
+    return n * fact(n-1)
 
 def arg_como_tuplas(*args):
     print(type(args))
@@ -30,9 +34,12 @@ class MiClass(object):
 if __name__ == '__main__':
     print("Hola mundo")
 
+
+
+    """
     arg_como_tuplas(1, 2, 3)
     arg_como_dic(a=1, b=2, c=3)
     arg_variables(1, 2, 3, a=1, b=2, c=3)
-        
+    """    
     
     
