@@ -8,6 +8,12 @@ def fact(n):
         return 1
     return n * fact(n-1)
 
+
+def mmap(lista, ce, func):
+    if ce==0:
+        return
+    func(lista[ce-1]) 
+    
 def arg_como_tuplas(*args):
     print(type(args))
     ar1, ar2, ar3 = args
