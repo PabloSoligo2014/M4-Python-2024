@@ -31,26 +31,25 @@ def arg_variables(*args, **kwargs):
     return args, kwargs
 
 
-class MiClass(object):
-    _f = 0
-    def __init__(self, *args, **kwargs):
-        print("Constructor")
 
-        self._f = kwargs["f"]
     
-    def __eq__(self, other):
-        return self._f == other._f
-    
-    def __ne__(self, other):
-        return not self.__eq__(other)
-    
-    def __gt__(self, other):
-        return self._f > other._f
-    
+class AgeException(Exception):
+    def __init__(self, val):
+        self.msg = "Error en el valor edad: " + str(val) 
+
+    def __str__(self):
+        return self.msg
+
+
+def ageValidator(val):
+
+    if val<0 or val>100:
+        raise AgeException(val)
+    return val
 
 
 
 if __name__ == '__main__':
     pass
 
-    
+   
