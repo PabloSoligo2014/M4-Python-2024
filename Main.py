@@ -69,6 +69,18 @@ class GeoPosicion(object):
         return self.distance(other)
     
     
+class Place(GeoPosicion):
+
+    __description = ""
+
+    @property
+    def description(self):
+        return self.__description
+
+    def __init__(self, *args, **kwargs):
+        super(Place, self).__init__(*args, **kwargs)
+        if "description" in kwargs:
+            self.__description = kwargs["description"]
     
     
 if __name__ == '__main__':
@@ -82,8 +94,9 @@ if __name__ == '__main__':
     print(g.lat, g.lon)
     print(g.__lat, g)
 
-    gConae  = GeoPosicion(lat=-34.616838, lon=-58.369501)
+    gConae  = Place(lat=-34.616838, lon=-58.369501, description="CONAE")
     gUNLaM  = GeoPosicion(lat=-34.669898, lon=-58.561815)
+    
     
     
     print("La distancia entre la CONAE y la UNLAM es de %5.2f km"%gConae.distance(gUNLaM))
