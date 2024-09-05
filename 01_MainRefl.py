@@ -1,9 +1,4 @@
-#coding=utf8
-#->La linea anterior habilita al uso de caracteres no ascii en los mensajes
-
-#python -m compileall Main.py
-
-from Calib import *
+from Calib import calibT1, calibVar01, calibVar02, calibVar03, calibTXcurrent
 
 def miFun():
     print("Llamando a una funcion")
@@ -65,5 +60,3 @@ if __name__ == '__main__':
         if f:
             rslt = f(value)
             print("Resultado de %s: %f" % (v, rslt))
-
-   
