@@ -8,6 +8,7 @@ Created on 9 ago. 2019
 
 #import random
 from math import sin, cos, sqrt, atan2, radians
+from typing import Any
 
 R = 6373.0
 
@@ -68,7 +69,10 @@ class Geolocation(object):
     def __sub__(self, other):
         return self.distance(other)
     
-    
+    def __call__(self, *args: Any, **kwds: Any):
+        print("metodo call")
+
+
 class Place(Geolocation):
 
     __description = ""
@@ -81,24 +85,4 @@ class Place(Geolocation):
         super(Place, self).__init__(*args, **kwargs)
         if "description" in kwargs:
             self.__description = kwargs["description"]
-    
-    
-if __name__ == '__main__':
-    
-   
-    g = Geolocation(lon=30.5, lat=5.5)
-    g.__lat = 10
-
-    
-    
-    print(g.lat, g.lon)
-    print(g.__lat, g)
-
-    gConae  = Place(lat=-34.616838, lon=-58.369501, description="CONAE")
-    gUNLaM  = Geolocation(lat=-34.669898, lon=-58.561815)
-    
-    
-    
-    print("La distancia entre la CONAE y la UNLAM es de %5.2f km"%gConae.distance(gUNLaM))
-    print("La distancia entre la CONAE y la UNLAM es de %5.2f km"%(gConae-gUNLaM))
     
